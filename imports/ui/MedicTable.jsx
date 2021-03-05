@@ -20,8 +20,6 @@ export const MedicTable = () => {
     MedicCollections.find({}, { sort: { createdAt: -1 } }).fetch()
   );
 
-  const deleteTask = ({ _id }) => MedicCollections.remove(_id);
-
   if (!persons) {
     return <Progress colorScheme="teal" size="xs" isIndeterminate />;
   }
@@ -41,7 +39,7 @@ export const MedicTable = () => {
         </Thead>
         <Tbody>
           {persons.map((medic) => (
-            <Medic key={medic._id} medic={medic} onDeleteClick={deleteTask} />
+            <Medic key={medic._id} medic={medic} />
           ))}
         </Tbody>
       </Table>
